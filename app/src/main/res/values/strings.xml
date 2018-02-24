@@ -1,3 +1,11 @@
-<resources>
-    <string name="app_name">the_quiz_app</string>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">THE QUIZ APP</string>
+    <!--Hint for the name field -->
+    <string name="hint_name">Name</string>
+    <!--Button text for Start-->
+    <string name="start_button">START</string>
+    <!--This will show the quiz score example: Score 5/10-->
+    <string name="quiz_score">Score <xliff:g example="5" id="number_right">%d</xliff:g>/<xliff:g example="10" id="number_possible">%d</xliff:g></string>
+    <!--Question text field - Example: Question: What is the highest mountain in the world? -->
+    <string name="the_question">Question: <xliff:g example="How many wars did Colonel Potter fight in?" id="question_text">%s</xliff:g></string>
 </resources>
