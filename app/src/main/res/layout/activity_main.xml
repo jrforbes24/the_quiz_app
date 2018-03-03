@@ -26,21 +26,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:clickable="false"
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/whichButton"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16sp"
-                android:text="@string/start_button"/>
+                android:layout_weight="1"
+                android:text="@string/start_button"
+                android:onClick="startOrQuit"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:textAlignment="center"
-                android:text="@string/quiz_score"/>
+                android:text="@string/quiz_score"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <TextView

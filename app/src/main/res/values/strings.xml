@@ -4,6 +4,8 @@
     <string name="hint_name">Name</string>
     <!--Button text for Start-->
     <string name="start_button">START</string>
+    <!--Button text for Quit-->
+    <string name="quit_button">QUIT</string>
     <!--This will show the quiz score example: Score 5/10-->
     <string name="quiz_score">Score <xliff:g example="5" id="number_right">%d</xliff:g>/10</string>
     <!--Question text field - Example: Question: What is the highest mountain in the world? -->
