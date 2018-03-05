@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     int qustionNumber = 0;
 //    array to store the questions
     String[] questionArray = {
-            "Which caliber bullet is the biggest by weight?",
+            "What is the most popular pistol caliber?",
             "How amy wars did Colonel Potter from MASH fight in?",
             "When is Justin Bieber's birthday?",
             "What is the best rock band of all time?",
@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
             "What was the name of the probe that flew closest to Pluto?",
             "What is the name of the closest star to Earth?"
 };
+//   multidimensional array to store the answers
+    String [] answerArray = {
+        {}
+}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     */
     public void startQuiz(View view) {
         Button whichButton = findViewById(R.id.whichButton);
-        whichButton.setText(R.string.quit_button);
+        whichButton.setText("QUIT");
     }
 
     /*
@@ -123,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     */
     public void quitQuiz(View view) {
         Button whichButton = findViewById(R.id.whichButton);
-        whichButton.setText(R.string.start_button);
+        whichButton.setText("START");
     }
 }
 
