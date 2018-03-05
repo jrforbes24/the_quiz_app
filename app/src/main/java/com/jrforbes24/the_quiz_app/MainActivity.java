@@ -23,6 +23,21 @@ public class MainActivity extends AppCompatActivity {
     int theScore = 0;
     // integer to hold the total possible
     int possibleScore = 10;
+//    question number that will be iterated
+    int qustionNumber = 0;
+//    array to store the questions
+    String[] questionArray = {
+            "Which caliber bullet is the biggest by weight?",
+            "How amy wars did Colonel Potter from MASH fight in?",
+            "When is Justin Bieber's birthday?",
+            "What is the best rock band of all time?",
+            "Who wrote 'The Three Musketeers'",
+            "Who wrote the line 'And miles to go before I sleep'",
+            "In what year was the movie Top Gun released?",
+            "Where was Kim Kardashian when she was robbed in her apartment?",
+            "What was the name of the probe that flew closest to Pluto?",
+            "What is the name of the closest star to Earth?"
+};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
         if (view != null) {
             InputMethodManager imn = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imn.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//            After hiding keyboard switch focus to Start button.
+            Button whichButton = findViewById(R.id.whichButton);
+            whichButton.setFocusableInTouchMode(true);
+            whichButton.setFocusable(true);
+            whichButton.requestFocus();
         }
     }
 
@@ -78,12 +98,13 @@ public class MainActivity extends AppCompatActivity {
     public void startOrQuit(View view) {
         Button whichButton = findViewById(R.id.whichButton);
         String decide = whichButton.getText().toString();
-        Log.v("startOrQuiz", decide);
+
+
         if (decide == "START") {
-            startQuiz();
+            startQuiz(view);
         }
         else {
-            quitQuiz();
+            quitQuiz(view);
         }
     }
 
@@ -91,19 +112,18 @@ public class MainActivity extends AppCompatActivity {
     * startQuiz does the following, gets question and answers and adds to textview and buttons
     * also sets text of button to QUIT
     */
-    public void startQuiz() {
+    public void startQuiz(View view) {
         Button whichButton = findViewById(R.id.whichButton);
-        whichButton.setText(getString(R.string.quit_button));
-//        Log.v("startQuiz", "Should be QUIT");
+        whichButton.setText(R.string.quit_button);
     }
 
     /*
     * quitQuiz will display the final score in a toast, reset theScore to 0, change the button to START
     * and reset anything else I can't think of right now back to the starting position.
     */
-    public void quitQuiz() {
+    public void quitQuiz(View view) {
         Button whichButton = findViewById(R.id.whichButton);
-        whichButton.setText(getString(R.string.start_button));
+        whichButton.setText(R.string.start_button);
     }
 }
 
