@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
             "What is the name of the closest star to Earth?"
 };
 //   multidimensional array to store the answers
-    String [] answerArray = {
-        {}
-}
+//    String [] answerArray = {
+//        {"Bob"}
+//};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        Pulling in the_name EditText and assigning it the theName
         theName = (EditText) findViewById(R.id.the_name);
+
 
         theName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         String decide = whichButton.getText().toString();
 
 
-        if (decide == "START") {
+        if (decide.equals("START")) {
             startQuiz(view);
         }
         else {
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     */
     public void startQuiz(View view) {
         Button whichButton = findViewById(R.id.whichButton);
-        whichButton.setText("QUIT");
+        whichButton.setText(getString(R.string.quit_button));
     }
 
     /*
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     */
     public void quitQuiz(View view) {
         Button whichButton = findViewById(R.id.whichButton);
-        whichButton.setText("START");
+        whichButton.setText(getString(R.string.start_button));
     }
 }
 
