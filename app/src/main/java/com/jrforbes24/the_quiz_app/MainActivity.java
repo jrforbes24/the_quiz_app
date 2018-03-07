@@ -17,15 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    // this is an EditText variable theName that will hold the EditText state from the xml
-    private EditText theName;
     // integer to hold the current score
     int theScore = 0;
     // integer to hold the total possible
-    int possibleScore = 10;
-//    question number that will be iterated
+    int possibleScore = 8;
+    //    question number that will be iterated
     int qustionNumber = 0;
-//    array to store the questions
+    //    array to store the questions
     String[] questionArray = {
             "What is the most popular pistol caliber?",
             "How amy wars did Colonel Potter from MASH fight in?",
@@ -33,15 +31,22 @@ public class MainActivity extends AppCompatActivity {
             "What is the best rock band of all time?",
             "Who wrote 'The Three Musketeers'",
             "Who wrote the line 'And miles to go before I sleep'",
-            "In what year was the movie Top Gun released?",
-            "Where was Kim Kardashian when she was robbed in her apartment?",
-            "What was the name of the probe that flew closest to Pluto?",
+            "What was the name of the probe that flew by Pluto in July 2015?",
             "What is the name of the closest star to Earth?"
-};
-//   multidimensional array to store the answers
-//    String [] answerArray = {
-//        {"Bob"}
-//};
+    };
+    //   multidimensional array to store the answers
+    String[][] answerArray = {
+            {"radio", ".40 caliber", "9mm", ".45 acp", ".380 acp", "two_ button"},
+            {"radio", "5", "1", "3", "4", "three_button"},
+            {"radio", "1 Mar 1994", "21 Oct 1991", "3 July 1984", "30 May 1995", "one_button"},
+            {"check", "U2", "U2", "U2", "U2", "any"},
+            {"text", "alexandre dumas"},
+            {"radio", "emily dickinson", "robert frost", "francis scott key", "andrew jackson", "two_button"},
+            {"text", "new horizons"},
+            {"radio", "alpha centauri a", "alpha centauri b", "proxima centauri", "the sun", "four_button"}
+    };
+    // this is an EditText variable theName that will hold the EditText state from the xml
+    private EditText theName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,12 +108,9 @@ public class MainActivity extends AppCompatActivity {
     public void startOrQuit(View view) {
         Button whichButton = findViewById(R.id.whichButton);
         String decide = whichButton.getText().toString();
-
-
         if (decide.equals("START")) {
             startQuiz(view);
-        }
-        else {
+        } else {
             quitQuiz(view);
         }
     }

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/hint_name"
-            android:layout_margin="8sp"
+            android:layout_margin="8dp"
             android:imeOptions="actionDone"
             android:singleLine="true"
             android:lines="1"
@@ -33,7 +33,7 @@
                 android:id="@+id/whichButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16sp"
+                android:layout_marginLeft="16dp"
                 android:layout_weight="1"
                 android:text="@string/start_button"
                 android:onClick="startOrQuit"/>
@@ -52,7 +52,7 @@
             android:layout_weight="1"
             android:textAlignment="center"
             android:gravity="center_vertical"
-            android:layout_margin="16sp"
+            android:layout_margin="16dp"
             android:text="@string/the_question"/>
 
         <LinearLayout
@@ -64,26 +64,26 @@
                 android:id="@+id/one_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16sp"
+                android:padding="16dp"
                 android:text="@string/one_answer"/>
             <Button
                 android:id="@+id/two_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16sp"
+                android:padding="16dp"
                 android:text="@string/two_answer"/>
             <Button
                 android:id="@+id/three_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16sp"
+                android:padding="16dp"
                 android:text="@string/three_answer"/>
 
             <Button
                 android:id="@+id/four_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16sp"
+                android:padding="16dp"
                 android:text="@string/four_answer" />
         </LinearLayout>
 
