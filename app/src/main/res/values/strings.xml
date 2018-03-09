@@ -7,16 +7,17 @@
     <!--Button text for Quit-->
     <string name="quit_button">QUIT</string>
     <!--This will show the quiz score example: Score 5/10-->
-    <string name="quiz_score">Score <xliff:g example="5" id="number_right">%d</xliff:g>/10</string>
+    <string name="quiz_score">Score <xliff:g example="5" id="number_right">%d</xliff:g>/7</string>
     <!--Question text field - Example: Question: What is the highest mountain in the world? -->
     <string name="the_question">Question: <xliff:g example="How many wars did Colonel Potter fight in?" id="question_text">%s</xliff:g></string>
-    <!--Answer field 1 this will hold the first possible answer Example:  A. one-->
-    <string name="one_answer">A. <xliff:g example="one" id="one_answer">%s</xliff:g></string>
-    <!--Answer field 2 this will hold the second possible answer Example:  B. twelve-->
-    <string name="two_answer">B. <xliff:g example="twelve" id="two_answer">%s</xliff:g></string>
-    <!--Answer field 3 this will hold the third possible answer Example:  C. two-->
-    <string name="three_answer">C. <xliff:g example="two" id="three_answer">%s</xliff:g></string>
-    <!--Answer field 4 this will hold the third possible answer Example:  D. five-->
-    <string name="four_answer">D. <xliff:g example="five" id="four_answer">%s</xliff:g></string>
-    <!---->
+    <!--hint for the text answer field-->
+    <string name="the_answer_hint">Answer</string>
+    <!--Radio button field one - Example: "Francis Scott Key"-->
+    <string name="one_button"><xliff:g example="Francis Scott Key" id="one_button">%s</xliff:g></string>
+    <!--Radio button field two - Example: "Emily Dickinson"-->
+    <string name="two_button"><xliff:g example="Emily Dickinson" id="two_button">%s</xliff:g></string>
+    <!--Radio button field three - Example: "Robert Frost"-->
+    <string name="three_button"><xliff:g example="Robert Frost" id="three_button">%s</xliff:g></string>
+    <!--Radio button field four - Example: "Alexander Hamilton"-->
+    <string name="four_button"><xliff:g example="Alexander Hamilton" id="four_button">%s</xliff:g></string>
 </resources>
