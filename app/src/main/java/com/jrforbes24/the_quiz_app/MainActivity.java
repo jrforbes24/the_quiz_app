@@ -1,6 +1,7 @@
 package com.jrforbes24.the_quiz_app;
 
 import android.content.Context;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,13 +54,15 @@ public class MainActivity extends AppCompatActivity {
     // this is an EditText variable theName that will hold the EditText state from the xml
     private EditText theName;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Pulling in the_name EditText and assigning it the theName
-        theName = (EditText) findViewById(R.id.the_name);
 
+//        Pulling in the_name EditText and assigning it the theName prepping for setting the listener
+        theName =  findViewById(R.id.the_name);
         /*
         * Method to listen for actions on theName text field
         */
@@ -74,6 +78,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radioButton1:
+                if (checked)
+
+                    break;
+            case R.id.radioButton2:
+                if (checked)
+
+                    break;
+            case R.id.radioButton3:
+                if (checked)
+
+                    break;
+            case R.id.radioButton4:
+                if (checked)
+
+                    break;
+        }
     }
 
     /*
@@ -114,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         Button whichButton = findViewById(R.id.whichButton);
         String decide = whichButton.getText().toString();
         if (decide.equals("START")) {
+            hideKeyboard();
             startQuiz(view);
         } else {
             quitQuiz(view);
@@ -127,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     public void startQuiz(View view) {
 //      method to populate the question text field.
         populateQuestion(view);
-        populateAnswer(view);
+        showAnswerView(view);
 //        this will set the Text view to visible
         TextView theQuestion = findViewById(R.id.question_TV);
         theQuestion.setVisibility(View.VISIBLE);
@@ -174,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
     * populateAnswer gets the answer from the array and based on the array will change
     * the answer view and populate the appropriate fields.
     */
-    public void populateAnswer(View view) {
+    public void showAnswerView(View view) {
 //        find out which view to show and which view to hide.
         String theView = answerArray[questionNumber][0];
         if(theView.equals("radio")) {
@@ -211,7 +241,15 @@ public class MainActivity extends AppCompatActivity {
     * call method for listener on the check boxes
     */
     public void populateRadioButtons(View view) {
-//        TODO
+//        Get the radio group
+        RadioGroup radGroup = findViewById(R.id.multi_radio);
+
+        for (int i=0; i<radGroup.getChildCount(); i++) {
+            ((RadioButton) radGroup.getChildAt(i)).setText(answerArray[questionNumber][i + 1]);
+        }
+
+        correctAnswer = answerArray[questionNumber][answerArray[questionNumber].length -1];
+        System.out.println(correctAnswer);
     }
 
     /*
