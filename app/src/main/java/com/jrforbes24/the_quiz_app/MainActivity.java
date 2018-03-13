@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+//    FINAL to make logging easier.
+    public static final String TAG = MainActivity.class.getSimpleName();
     // integer to hold the current score
     int theScore = 0;
     // integer to hold the total possible
@@ -78,9 +80,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
+
+
     public void onRadioButtonClicked(View view) {
+//        Bring in the radio buttons
+        RadioButton rb1 = findViewById(R.id.radioButton1);
+        RadioButton rb2 = findViewById(R.id.radioButton2);
+        RadioButton rb3 = findViewById(R.id.radioButton3);
+        RadioButton rb4 = findViewById(R.id.radioButton4);
+
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -88,19 +99,19 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radioButton1:
                 if (checked)
-
+                    checkAnswer(rb1.getText().toString());
                     break;
             case R.id.radioButton2:
                 if (checked)
-
+                    checkAnswer(rb2.getText().toString());
                     break;
             case R.id.radioButton3:
                 if (checked)
-
+                    checkAnswer(rb3.getText().toString());
                     break;
             case R.id.radioButton4:
                 if (checked)
-
+                    checkAnswer(rb4.getText().toString());
                     break;
         }
     }
@@ -250,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
 
         correctAnswer = answerArray[questionNumber][answerArray[questionNumber].length -1];
         System.out.println(correctAnswer);
+
     }
 
     /*
@@ -267,7 +279,20 @@ public class MainActivity extends AppCompatActivity {
 //        TODO
     }
 
+/*
+* method to check if the answer is correct
+* @param string with the answer
+*/
+    public void checkAnswer(String userAnswer) {
+        if (userAnswer.equals(correctAnswer)) {
+            increaseScore();
+            correctToast();
+            questionNumber += 1;
+            populateQuestion(view);
+            showAnswerView(view);
 
+        }
+    }
 }
 
 
