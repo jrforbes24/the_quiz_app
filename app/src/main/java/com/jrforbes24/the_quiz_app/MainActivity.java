@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -44,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
     };
     //   multidimensional array to store the answers
     String[][] answerArray = {
-            {"radio", ".40 caliber", "9mm", ".45 acp", ".380 acp", "two_ button"},
-            {"radio", "5", "1", "3", "4", "three_button"},
-            {"radio", "1 Mar 1994", "21 Oct 1991", "3 July 1984", "30 May 1995", "one_button"},
+            {"radio", ".40 caliber", "9mm", ".45 acp", ".380 acp", "2"},
+            {"radio", "5", "1", "3", "4", "3"},
+            {"radio", "1 Mar 1994", "21 Oct 1991", "3 July 1984", "30 May 1995", "3"},
             {"check", "U2", "U2", "U2", "U2", "any"},
             {"text", "alexandre dumas"},
-            {"radio", "emily dickinson", "robert frost", "francis scott key", "andrew jackson", "two_button"},
+            {"radio", "emily dickinson", "robert frost", "francis scott key", "andrew jackson", "2"},
             {"text", "new horizons"},
-            {"radio", "alpha centauri a", "alpha centauri b", "proxima centauri", "the sun", "four_button"}
+            {"radio", "alpha centauri a", "alpha centauri b", "proxima centauri", "the sun", "4"}
     };
     // this is an EditText variable theName that will hold the EditText state from the xml
     private EditText theName;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 //        Pulling in the_name EditText and assigning it the theName prepping for setting the listener
         theName =  findViewById(R.id.the_name);
@@ -95,24 +97,46 @@ public class MainActivity extends AppCompatActivity {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
+
+
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.radioButton1:
                 if (checked)
-                    checkAnswer(rb1.getText().toString());
+                    rb1.setChecked(false);
+                    checkAnswer(rb1.getText().toString(), view);
                     break;
             case R.id.radioButton2:
                 if (checked)
-                    checkAnswer(rb2.getText().toString());
+                    rb2.setChecked(false);
+                    checkAnswer(rb2.getText().toString(), view);
                     break;
             case R.id.radioButton3:
                 if (checked)
-                    checkAnswer(rb3.getText().toString());
+                    rb3.setChecked(false);
+                    checkAnswer(rb3.getText().toString(), view);
                     break;
             case R.id.radioButton4:
                 if (checked)
-                    checkAnswer(rb4.getText().toString());
+                    rb4.setChecked(false);
+                    checkAnswer(rb4.getText().toString(), view);
                     break;
+        }
+    }
+
+    /*
+    * Check to see which checkbox is checked.
+    */
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch (view.getId()) {
+            case R.id.one_box:
+                if(checked) {
+
+                }
         }
     }
 
@@ -201,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
 //        change the quit button to start
         Button whichButton = findViewById(R.id.whichButton);
         whichButton.setText(getString(R.string.start_button));
+        resetScore(view);
     }
 
     /*
@@ -259,7 +284,8 @@ public class MainActivity extends AppCompatActivity {
             ((RadioButton) radGroup.getChildAt(i)).setText(answerArray[questionNumber][i + 1]);
         }
 
-        correctAnswer = answerArray[questionNumber][answerArray[questionNumber].length -1];
+        int correctAnswerArrayPosition = Integer.parseInt(answerArray[questionNumber][answerArray[questionNumber].length -1]);
+        correctAnswer = answerArray[questionNumber][correctAnswerArrayPosition];
         System.out.println(correctAnswer);
 
     }
@@ -282,18 +308,69 @@ public class MainActivity extends AppCompatActivity {
 /*
 * method to check if the answer is correct
 * @param string with the answer
+* @param view
 */
-    public void checkAnswer(String userAnswer) {
+    public void checkAnswer(String userAnswer, View view) {
         if (userAnswer.equals(correctAnswer)) {
-            increaseScore();
             correctToast();
+            increaseScore(view);
             questionNumber += 1;
             populateQuestion(view);
             showAnswerView(view);
-
+        }
+        else {
+            incorrectToast();
+            questionNumber += 1;
+            populateQuestion(view);
+            showAnswerView(view);
         }
     }
+
+    /*
+    * Toast to let player know they are correct.
+    */
+    public void correctToast() {
+        Context context = getApplicationContext();
+        CharSequence text = "That is correct!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    /*
+    * Toast to let player know they are correct.
+    */
+    public void incorrectToast() {
+        Context context = getApplicationContext();
+        String text = "That is incorrect!";
+        text += "\n the correct answer is " + correctAnswer;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    /*
+    * Method to increase the score in the text field.
+    */
+    public void increaseScore(View view) {
+        TextView quiz_score = findViewById(R.id.the_score);
+        theScore += 1;
+        quiz_score.setText(getString(R.string.quiz_score, theScore));
+    }
+
+    /*
+    * Need to reset the score on the app screen to 0/8
+    */
+    public void resetScore(View view) {
+        TextView quiz_score = findViewById(R.id.the_score);
+        quiz_score.setText(getString(R.string.quiz_score, theScore));
+    }
+
+
 }
+
 
 
 
