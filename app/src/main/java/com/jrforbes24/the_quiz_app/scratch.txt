@@ -22,6 +22,7 @@ When start button pressed
  - When last question checked
     - display submit button at the bottom
     - show long toast with score
+        - combine name score and some type of message based on score.
     - set all back to default
 - Quit function
     set variables back to default

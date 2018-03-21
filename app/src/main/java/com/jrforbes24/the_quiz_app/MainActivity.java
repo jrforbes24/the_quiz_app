@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     String[][] answerArray = {
             {"radio", ".40 caliber", "9mm", ".45 acp", ".380 acp", "2"},
             {"radio", "5", "1", "3", "4", "3"},
-            {"radio", "1 Mar 1994", "21 Oct 1991", "3 July 1984", "30 May 1995", "3"},
+            {"radio", "1 Mar 1994", "21 Oct 1991", "3 July 1984", "30 May 1995", "1"},
             {"check", "U2", "U2", "U2", "U2", "any"},
             {"text", "alexandre dumas"},
             {"radio", "emily dickinson", "robert frost", "francis scott key", "andrew jackson", "2"},
@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     };
     // this is an EditText variable theName that will hold the EditText state from the xml
     private EditText theName;
+
+//    this is and EditText variable theTextFieldAnswer will hold the EditText state from the xml
+    private EditText theTextFieldAnswer;
 
 
 
@@ -83,10 +86,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        theTextFieldAnswer = findViewById(R.id.the_answer_text);
+
+        theTextFieldAnswer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            EditText theAnswer = findViewById(R.id.the_answer_text);
+            String textAnswer = theAnswer.getText().toString();
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))) {
+                    hideKeyboard();
+                    checkAnswer(textAnswer, view);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
     }
 
 
-
+    /*
+    * Listen for radio buttons being checked
+    */
     public void onRadioButtonClicked(View view) {
 //        Bring in the radio buttons
         RadioButton rb1 = findViewById(R.id.radioButton1);
@@ -128,6 +150,13 @@ public class MainActivity extends AppCompatActivity {
     * Check to see which checkbox is checked.
     */
     public void onCheckboxClicked(View view) {
+
+//        Get the checkboxes
+        CheckBox cb1 = findViewById(R.id.one_box);
+        CheckBox cb2 = findViewById(R.id.two_box);
+        CheckBox cb3 = findViewById(R.id.three_box);
+        CheckBox cb4 = findViewById(R.id.four_box);
+
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
 
@@ -135,10 +164,28 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.one_box:
                 if(checked) {
-
+                    cb1.setChecked(false);
+                    checkAnswer(cb1.getText().toString(), view);
+                }
+            case R.id.two_box:
+                if(checked) {
+                    cb2.setChecked(false);
+                    checkAnswer(cb2.getText().toString(), view);
+                }
+            case R.id.three_box:
+                if(checked) {
+                    cb3.setChecked(false);
+                    checkAnswer(cb3.getText().toString(), view);
+                }
+            case R.id.four_box:
+                if(checked) {
+                    cb4.setChecked(false);
+                    checkAnswer(cb4.getText().toString(), view);
                 }
         }
     }
+
+
 
     /*
     * Function to hide the soft keyboard.
@@ -286,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
 
         int correctAnswerArrayPosition = Integer.parseInt(answerArray[questionNumber][answerArray[questionNumber].length -1]);
         correctAnswer = answerArray[questionNumber][correctAnswerArrayPosition];
-        System.out.println(correctAnswer);
+
 
     }
 
@@ -295,14 +342,14 @@ public class MainActivity extends AppCompatActivity {
     * call the method to check for the keyboard done
     */
     public void populateTextField(View view) {
-//        TODO
+//
     }
 
     /*
     * populate the check boxes and set listener
     */
     public void populateCheckBoxes(View view) {
-//        TODO
+        correctAnswer = "U2";
     }
 
 /*
