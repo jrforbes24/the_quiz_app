@@ -39,3 +39,7 @@ When start button pressed
     int questionNumber = 0;
     // variable to store the correct answer to check against for the answer.
     String correctAnswer = "";
+
+    erase text in textfield after answer checked or on quit
+
+    take the text field string to lower

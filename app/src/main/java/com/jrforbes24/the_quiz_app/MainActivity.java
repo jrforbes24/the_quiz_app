@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
 //    FINAL to make logging easier.
     public static final String TAG = MainActivity.class.getSimpleName();
     // integer to hold the current score
@@ -91,10 +92,12 @@ public class MainActivity extends AppCompatActivity {
         theTextFieldAnswer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             EditText theAnswer = findViewById(R.id.the_answer_text);
-            String textAnswer = theAnswer.getText().toString();
+
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))) {
                     hideKeyboard();
+                    String textAnswer = theAnswer.getText().toString().toLowerCase();
+                    View view = findViewById(R.id.the_answer_text);
                     checkAnswer(textAnswer, view);
                     return true;
                 } else {
@@ -144,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     checkAnswer(rb4.getText().toString(), view);
                     break;
         }
+        Log.v(TAG, "onRadioButton end");
     }
 
     /*
@@ -166,23 +170,28 @@ public class MainActivity extends AppCompatActivity {
                 if(checked) {
                     cb1.setChecked(false);
                     checkAnswer(cb1.getText().toString(), view);
+                    break;
                 }
             case R.id.two_box:
                 if(checked) {
                     cb2.setChecked(false);
                     checkAnswer(cb2.getText().toString(), view);
+                    break;
                 }
             case R.id.three_box:
                 if(checked) {
                     cb3.setChecked(false);
                     checkAnswer(cb3.getText().toString(), view);
+                    break;
                 }
             case R.id.four_box:
                 if(checked) {
                     cb4.setChecked(false);
                     checkAnswer(cb4.getText().toString(), view);
+                    break;
                 }
         }
+        Log.v(TAG, "oncheckbox end " );
     }
 
 
@@ -201,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
             whichButton.setFocusable(true);
             whichButton.requestFocus();
         }
+        Log.v(TAG, "hideKeyboard end" );
     }
 
     /*
@@ -216,6 +226,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+
+        Log.v(TAG, "createHelloToast end " );
     }
 
     /*
@@ -230,6 +242,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             quitQuiz(view);
         }
+
+        Log.v(TAG, "startOrQuit end");
     }
 
     /*
@@ -247,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
         Button whichButton = findViewById(R.id.whichButton);
         whichButton.setText(getString(R.string.quit_button));
 
+        Log.v(TAG, "startQuiz end" );
     }
 
     /*
@@ -273,6 +288,8 @@ public class MainActivity extends AppCompatActivity {
         Button whichButton = findViewById(R.id.whichButton);
         whichButton.setText(getString(R.string.start_button));
         resetScore(view);
+
+        Log.v(TAG, "quitQuiz end");
     }
 
     /*
@@ -281,6 +298,8 @@ public class MainActivity extends AppCompatActivity {
     public void populateQuestion(View view) {
         TextView theQuestion = findViewById(R.id.question_TV);
         theQuestion.setText(getString(R.string.the_question, questionArray[questionNumber]));
+
+        Log.v(TAG, "populateQuestion end" );
     }
 
     /*
@@ -299,16 +318,7 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout the_check_boxs = findViewById(R.id.check_box);
             the_check_boxs.setVisibility(View.GONE);
         }
-        else if(theView.equals("text")) {
-            populateTextField(view);
-            RadioGroup radio_group = findViewById(R.id.multi_radio);
-            radio_group.setVisibility(View.GONE);
-            EditText text_answer = findViewById(R.id.the_answer_text);
-            text_answer.setVisibility(View.VISIBLE);
-            LinearLayout the_check_boxs = findViewById(R.id.check_box);
-            the_check_boxs.setVisibility(View.GONE);
-        }
-        else {
+        else if(theView.equals("check")) {
             populateCheckBoxes(view);
             RadioGroup radio_group = findViewById(R.id.multi_radio);
             radio_group.setVisibility(View.GONE);
@@ -317,6 +327,18 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout the_check_boxs = findViewById(R.id.check_box);
             the_check_boxs.setVisibility(View.VISIBLE);
         }
+        else {
+
+            RadioGroup radio_group = findViewById(R.id.multi_radio);
+            radio_group.setVisibility(View.GONE);
+            LinearLayout the_check_boxs = findViewById(R.id.check_box);
+            the_check_boxs.setVisibility(View.GONE);
+            EditText text_answer = findViewById(R.id.the_answer_text);
+            text_answer.setVisibility(View.VISIBLE);
+            populateTextField(view);
+        }
+
+        Log.v(TAG, "showAnswerView end" );
     }
 
     /*
@@ -334,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
         int correctAnswerArrayPosition = Integer.parseInt(answerArray[questionNumber][answerArray[questionNumber].length -1]);
         correctAnswer = answerArray[questionNumber][correctAnswerArrayPosition];
 
-
+        Log.v(TAG, "populateRadioButtons end" );
     }
 
     /*
@@ -342,7 +364,8 @@ public class MainActivity extends AppCompatActivity {
     * call the method to check for the keyboard done
     */
     public void populateTextField(View view) {
-//
+        correctAnswer = answerArray[questionNumber][1];
+        Log.v(TAG, "populateTextField end");
     }
 
     /*
@@ -350,6 +373,7 @@ public class MainActivity extends AppCompatActivity {
     */
     public void populateCheckBoxes(View view) {
         correctAnswer = "U2";
+        Log.v(TAG, "populateCheckBoxes end" );
     }
 
 /*
@@ -371,6 +395,25 @@ public class MainActivity extends AppCompatActivity {
             populateQuestion(view);
             showAnswerView(view);
         }
+        Log.v(TAG, "checkAnswer1 end"  );
+    }
+
+    /*
+    * method to check if the answer is correct
+    * @param string with the answer
+    */
+    public void checkAnswer(String userAnswer) {
+        if (userAnswer.equals(correctAnswer)) {
+            correctToast();
+
+
+        }
+        else {
+            incorrectToast();
+            questionNumber += 1;
+
+        }
+        Log.v(TAG, "checkAnswer2 end");
     }
 
     /*
@@ -383,6 +426,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+
+        Log.v(TAG, "correctToast end" );
     }
 
     /*
@@ -396,6 +441,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+
+        Log.v(TAG, "incorrectToast end");
     }
 
     /*
@@ -405,6 +452,8 @@ public class MainActivity extends AppCompatActivity {
         TextView quiz_score = findViewById(R.id.the_score);
         theScore += 1;
         quiz_score.setText(getString(R.string.quiz_score, theScore));
+
+        Log.v(TAG, "increaseScore end");
     }
 
     /*
@@ -413,6 +462,8 @@ public class MainActivity extends AppCompatActivity {
     public void resetScore(View view) {
         TextView quiz_score = findViewById(R.id.the_score);
         quiz_score.setText(getString(R.string.quiz_score, theScore));
+
+        Log.v(TAG, "resetScore end");
     }
 
 
