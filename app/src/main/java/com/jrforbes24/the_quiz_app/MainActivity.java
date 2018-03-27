@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))) {
                     hideKeyboard();
                     String textAnswer = theAnswer.getText().toString().toLowerCase();
+                    theAnswer.setText("");
                     View view = findViewById(R.id.the_answer_text);
                     checkAnswer(textAnswer, view);
                     return true;
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                     checkAnswer(rb4.getText().toString(), view);
                     break;
         }
-        Log.v(TAG, "onRadioButton end");
+
     }
 
     /*
@@ -382,39 +383,35 @@ public class MainActivity extends AppCompatActivity {
 * @param view
 */
     public void checkAnswer(String userAnswer, View view) {
-        if (userAnswer.equals(correctAnswer)) {
-            correctToast();
-            increaseScore(view);
-            questionNumber += 1;
-            populateQuestion(view);
-            showAnswerView(view);
+        if (questionNumber < 7) {
+            if (userAnswer.equals(correctAnswer)) {
+                correctToast();
+                increaseScore(view);
+                questionNumber += 1;
+                populateQuestion(view);
+                showAnswerView(view);
+            } else {
+                incorrectToast();
+                questionNumber += 1;
+                populateQuestion(view);
+                showAnswerView(view);
+            }
         }
         else {
-            incorrectToast();
-            questionNumber += 1;
-            populateQuestion(view);
-            showAnswerView(view);
+//            This is the end of the quiz, need to do the needful.
+            if (userAnswer.equals(correctAnswer)) {
+                correctToast();
+                increaseScore(view);
+                quitQuiz(view);
+
+            } else {
+                incorrectToast();
+                quitQuiz(view);
+            }
         }
-        Log.v(TAG, "checkAnswer1 end"  );
     }
 
-    /*
-    * method to check if the answer is correct
-    * @param string with the answer
-    */
-    public void checkAnswer(String userAnswer) {
-        if (userAnswer.equals(correctAnswer)) {
-            correctToast();
 
-
-        }
-        else {
-            incorrectToast();
-            questionNumber += 1;
-
-        }
-        Log.v(TAG, "checkAnswer2 end");
-    }
 
     /*
     * Toast to let player know they are correct.

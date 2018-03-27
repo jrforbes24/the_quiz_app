@@ -1,45 +1,10 @@
-When start button pressed
-- Change button to Quit
-- Display the Question in the text field
-    Get question field
-    get the question from array
-    update the question field with the question text
-    display the question view text field
-- Display the answer view
-    Get the answer array
-    determine which answer view to show based on array value
-    get answer view
-    set correctAnswer variable with array value
-    set to visible
-    need a listener? probably
-- Update the questionNumber +1
-- onClick check if answer is correct
-    update score if correct
-- Display Toast
-     if correct
-     else not correct and display correct answer in the toast.
- - Repeat the Display Question and Display Answer
- - When last question checked
-    - display submit button at the bottom
-    - show long toast with score
-        - combine name score and some type of message based on score.
-    - set all back to default
-- Quit function
-    set variables back to default
-    set button to Start
-    hide all answer views
-    including question view
 
-
-// integer to hold the current score
-    int theScore = 0;
-    // integer to hold the total possible
-    int possibleScore = 8;
-    //    question number that will be iterated
-    int questionNumber = 0;
-    // variable to store the correct answer to check against for the answer.
-    String correctAnswer = "";
 
     erase text in textfield after answer checked or on quit
 
-    take the text field string to lower
+    correct question about robert frost
+
+    need a way to break when we the end of the quiz
+
+
+
