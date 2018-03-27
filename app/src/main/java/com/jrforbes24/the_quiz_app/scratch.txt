@@ -1,10 +1,14 @@
+Design things to do
+- Question text and Score text need to be bigger
+    - change text color
+- move the radio buttons and checkboxes away from the edges
+    - make the text bigger and easier to click
+- hint text for Alexandre Dumas
+- capitalize Text for answers
+- Make the word Question in in the question different
+- update all strings so they are in the xml file
 
 
-    erase text in textfield after answer checked or on quit
-
-    correct question about robert frost
-
-    need a way to break when we the end of the quiz
 
 
 
