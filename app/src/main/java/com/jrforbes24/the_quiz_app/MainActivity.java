@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
     // integer to hold the current score
     int theScore = 0;
-    // integer to hold the total possible
-    int possibleScore = 8;
     //    question number that will be iterated
     int questionNumber = 0;
     // variable to store the correct answer to check against for the answer.
@@ -49,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
             {"radio", "1 Mar 1994", "21 Oct 1991", "3 July 1984", "30 May 1995", "1"},
             {"check", "U2", "U2", "U2", "U2", "any"},
             {"text", "alexandre dumas", "The french spelling"},
-            {"radio", "emily dickinson", "robert frost", "francis scott key", "andrew jackson", "2"},
+            {"radio", "Emily Dickinson", "Robert Frost", "Francis Scott Key", "Andrew Jackson", "2"},
             {"text", "new horizons", "Answer"},
-            {"radio", "alpha centauri a", "alpha centauri b", "proxima centauri", "the sun", "4"}
+            {"radio", "Alpha Centauri A", "Alpha Centauri B", "Proxima Centauri", "The Sun", "4"}
     };
     // this is an EditText variable theName that will hold the EditText state from the xml
     private EditText theName;

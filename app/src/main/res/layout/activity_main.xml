@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/hint_name"
-            android:layout_margin="8dp"
+            android:layout_margin="16dp"
             android:imeOptions="actionDone"
             android:singleLine="true"
             android:lines="1"
@@ -34,6 +34,7 @@
                 android:id="@+id/whichButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_weight="1"
                 android:text="@string/start_button"
@@ -75,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/the_answer_hint"
-                android:layout_margin="8dp"
+                android:layout_margin="16dp"
                 android:imeOptions="actionDone"
                 android:singleLine="true"
                 android:lines="1"
@@ -94,28 +95,36 @@
                     android:layout_height="wrap_content"
                     android:text="@string/one_button"
                     android:onClick="onRadioButtonClicked"
-                    android:textAppearance="?android:textAppearanceSmall"/>
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAppearance="?android:textAppearanceMedium"/>
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/two_button"
                     android:onClick="onRadioButtonClicked"
-                    android:textAppearance="?android:textAppearanceSmall"/>
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAppearance="?android:textAppearanceMedium"/>
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/three_button"
                     android:onClick="onRadioButtonClicked"
-                    android:textAppearance="?android:textAppearanceSmall"/>
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAppearance="?android:textAppearanceMedium"/>
                 <RadioButton
                     android:id="@+id/radioButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/four_button"
                     android:onClick="onRadioButtonClicked"
-                    android:textAppearance="?android:textAppearanceSmall"/>
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAppearance="?android:textAppearanceMedium"/>
             </RadioGroup>
             <LinearLayout
                 android:id="@+id/check_box"
@@ -128,24 +137,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="U2"
-                    android:onClick="onCheckboxClicked"/>
+                    android:onClick="onCheckboxClicked"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAppearance="?android:textAppearanceMedium"/>
+
                 <CheckBox
                     android:id="@+id/two_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="U2"
-                    android:onClick="onCheckboxClicked"/>
+                    android:onClick="onCheckboxClicked"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:textAppearance="?android:textAppearanceMedium"/>
                 <CheckBox
                     android:id="@+id/three_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="U2"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
                     android:onClick="onCheckboxClicked"/>
                 <CheckBox
                     android:id="@+id/four_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="U2"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="8dp"
                     android:onClick="onCheckboxClicked"/>
             </LinearLayout>
 
