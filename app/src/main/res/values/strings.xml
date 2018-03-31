@@ -11,7 +11,7 @@
     <!--This will show the quiz score example: Score 5/10-->
     <string name="quiz_score">Score <xliff:g example="5" id="number_right">%d</xliff:g>/8</string>
     <!--Question text field - Example: Question: What is the highest mountain in the world? -->
-    <string name="the_question">Question: <xliff:g example="How many wars did Colonel Potter fight in?" id="question_text">%s</xliff:g></string>
+    <string name="the_question">Q:<xliff:g example="How many wars did Colonel Potter fight in?" id="question_text">%s</xliff:g></string>
     <!--hint for the text answer field-->
     <string name="the_answer_hint">Answer</string>
     <!--Radio button field one - Example: "Francis Scott Key"-->

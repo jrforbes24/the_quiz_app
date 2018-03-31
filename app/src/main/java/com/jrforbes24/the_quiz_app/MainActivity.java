@@ -1,6 +1,7 @@
 package com.jrforbes24.the_quiz_app;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -47,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
             {"radio", "5", "1", "3", "4", "3"},
             {"radio", "1 Mar 1994", "21 Oct 1991", "3 July 1984", "30 May 1995", "1"},
             {"check", "U2", "U2", "U2", "U2", "any"},
-            {"text", "alexandre dumas"},
+            {"text", "alexandre dumas", "The french spelling"},
             {"radio", "emily dickinson", "robert frost", "francis scott key", "andrew jackson", "2"},
-            {"text", "new horizons"},
+            {"text", "new horizons", "Answer"},
             {"radio", "alpha centauri a", "alpha centauri b", "proxima centauri", "the sun", "4"}
     };
     // this is an EditText variable theName that will hold the EditText state from the xml
@@ -345,7 +346,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void populateTextField(View view) {
         correctAnswer = answerArray[questionNumber][1];
-
+        EditText text_field = findViewById(R.id.the_answer_text);
+        text_field.setHint(answerArray[questionNumber][2]);
     }
 
     /*
